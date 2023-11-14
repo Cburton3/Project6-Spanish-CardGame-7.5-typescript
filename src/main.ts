@@ -39,15 +39,15 @@ function printUrlImage(urlCard : string) {
   if (imgElement !== null && imgElement !== undefined && imgElement instanceof HTMLImageElement) {//que el var tiene un value 
     imgElement.src = urlCard;
   }
-}//instnace of type of var is on one type. tye of var correspondd of instance of, if yes then can exe fx 
+}//if the type of var corresponds to that in the 'instance of', then can exe fx 
 
-function givePointCard(card) {
+function givePointCard(card : number) {
   console.log(card);
   return card <= 7 ? card : 0.5;
 }
 
 let message = "";
-function checkGame(finalScore) {
+function checkGame(finalScore : number) {
   if (finalScore > 7.5) {
     gameOver();
   }
@@ -58,12 +58,12 @@ function checkGame(finalScore) {
 
 const disableButtons = () => {
   const newCard = document.getElementById("hitMe");
-  if (newCard !== null && newCard !== undefined) { //add instance of 
-    document.getElementById("hitMe").disabled = true;//change to var 
+  if (newCard !== null && newCard !== undefined && newCard instanceof HTMLButtonElement) { //add instance of 
+    newCard.disabled = true;//change to var 
   }
   const stick = document.getElementById("stick");
-  if (stick !== null && stick !== undefined) {
-    document.getElementById("stick").disabled = true;
+  if (stick !== null && stick !== undefined && stick instanceof HTMLButtonElement) {
+    stick.disabled = true;
   }
 };
 
@@ -76,8 +76,10 @@ function winGame() {
 }
 
 function gameOver() {
-  document.getElementById("score").innerHTML =
-    "Game Over, better luck next time!";
+  const scoreElement = document.getElementById("score");
+  if (scoreElement !== null && scoreElement !== undefined) {
+    scoreElement.textContent = "Game Over, better luck next time!";
+  }
   disableButtons();
 }
 
@@ -85,14 +87,14 @@ const giveRandomNumber = () => {
   return Math.ceil(Math.random() * 10);
 };
 
-const giveCardNumber = (randomNumber) => {
+const giveCardNumber = (randomNumber : number) => {
   if (randomNumber > 7) {
     randomNumber = randomNumber + 2;
   }
   return randomNumber;
 };
 
-const addPoints = (points) => {
+const addPoints = (points : number) => {
   currentScore = currentScore + points;
 };
 
@@ -120,7 +122,7 @@ if (newCard !== null && newCard !== undefined) {
 
 //STICK BUTTON
 
-function endGameMessage(finalScore) {
+function endGameMessage(finalScore : number) {
   if (finalScore < 4) {
     message = "Has sido muy conservador";
   } else if (finalScore <= 5) {
@@ -162,12 +164,12 @@ const resetScore = () => {
 
 const resetButtons = () => {
   const newCard = document.getElementById("hitMe");
-  if (newCard !== null && newCard !== undefined) {
-    document.getElementById("hitMe").disabled = false;
+  if (newCard !== null && newCard !== undefined && newCard instanceof HTMLButtonElement) {
+    newCard.disabled = false;
   }
   const stick = document.getElementById("stick");
-  if (stick !== null && stick !== undefined) {
-    document.getElementById("stick").disabled = false;
+  if (stick !== null && stick !== undefined && stick instanceof HTMLButtonElement) {
+    stick.disabled = false;
   }
 };
 
