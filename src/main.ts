@@ -188,3 +188,6 @@ const reset = document.getElementById("reset");
 if (reset !== null && reset !== undefined) {
   reset.addEventListener("click", handleReset);
 };
+
+//consulta : let var are ok being global?
+// needed to do npm install and then npm run dev (always)
