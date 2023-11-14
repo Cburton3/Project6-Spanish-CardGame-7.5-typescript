@@ -3,13 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Vite App</title>
   </head>
   <body>
-    <div id="app">
-      <h1>TypeScript Sandbox</h1>
-    </div>
+    <main>
+      <section>
+        <div id="cardPack">
+          <img
+            id="startCard"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
+            alt="card-back"
+            class="cartas"
+          />
+        </div>
+        <div class="buttons">
+          <button type="string" id="hitMe">Hit me</button>
+          <button type="string" id="stick">Stick</button>
+          <button type="string" id="reset">Reset</button>
+        </div>
+        <div id="score"></div>
+      </section>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
