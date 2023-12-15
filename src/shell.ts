@@ -1,13 +1,13 @@
 import { partida } from "./modelo";
 
-import { hitMe, resetCard } from "./motor";
-
 import {
   disableButtons,
   endGameMessage,
   finalScoreMessage,
   resetScore,
   resetButtons,
+  hitMe,
+  resetCard,
 } from "./ui";
 
 const newCard = document.getElementById("hitMe");
@@ -39,4 +39,4 @@ const handleReset = () => {
 const reset = document.getElementById("reset");
 if (reset !== null && reset !== undefined) {
   reset.addEventListener("click", handleReset);
-}
+};

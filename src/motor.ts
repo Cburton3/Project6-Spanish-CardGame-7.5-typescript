@@ -1,6 +1,9 @@
 import { partida } from "./modelo";
 
-import { printUrlImage, winGame, gameOver, showScore } from "./ui";
+import { 
+  winGame, 
+  gameOver, 
+} from "./ui";
 
 export function giveUrlCard(card: number) {
   switch (card) {
@@ -27,12 +30,12 @@ export function giveUrlCard(card: number) {
     default:
       return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
   }
-}
+};
 
 export function givePointCard(card: number) {
   console.log(card);
   return card <= 7 ? card : 0.5;
-}
+};
 
 export function checkGame(finalScore: number) {
   if (finalScore > 7.5) {
@@ -41,7 +44,7 @@ export function checkGame(finalScore: number) {
   if (finalScore === 7.5) {
     winGame();
   }
-}
+};
 
 export const giveRandomNumber = () => {
   return Math.ceil(Math.random() * 10);
@@ -55,29 +58,9 @@ export const giveCardNumber = (randomNumber: number) => {
 };
 
 export const addPoints = (points: number) => {
-  partida.currentScore = partida.currentScore + points; //this was changed by me
+  //partida.currentScore = partida.currentScore + points; //this was changed by me
+  return partida.currentScore + points
 };
+//add point to just do the calc
+//set func to add the newly added points 
 
-//reset button
-
-export const resetCard = () => {
-  const urlCard = giveUrlCard(0);
-  printUrlImage(urlCard);
-};
-
-export function hitMe() {
-  const randomNumber = giveRandomNumber();
-
-  const cardNumber = giveCardNumber(randomNumber);
-
-  const urlCard = giveUrlCard(cardNumber);
-
-  printUrlImage(urlCard);
-
-  const points = givePointCard(cardNumber);
-
-  addPoints(points);
-
-  showScore();
-  checkGame(partida.currentScore);
-}

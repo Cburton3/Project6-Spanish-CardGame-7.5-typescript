@@ -1,4 +1,12 @@
-import { partida } from "./modelo";
+import { partida, setCurrentScore } from "./modelo";
+import {
+  addPoints,
+  givePointCard,
+  giveUrlCard,
+  giveCardNumber,
+  checkGame,
+  giveRandomNumber,
+} from "./motor";
 
 export const showScore = () => {
   const scoreElement = document.getElementById("score");
@@ -102,3 +110,29 @@ export const resetButtons = () => {
     stick.disabled = false;
   }
 };
+
+export const resetCard = () => {
+  const urlCard = giveUrlCard(0);
+  printUrlImage(urlCard);
+};
+
+export function hitMe() {
+  const randomNumber = giveRandomNumber();
+
+  const cardNumber = giveCardNumber(randomNumber);
+
+  const urlCard = giveUrlCard(cardNumber);
+
+  printUrlImage(urlCard);
+
+  const points = givePointCard(cardNumber);
+
+  //addPoints(points);
+  const newPoints = addPoints(points);
+
+  setCurrentScore(newPoints);
+
+  showScore();
+
+  checkGame(partida.currentScore);
+}
