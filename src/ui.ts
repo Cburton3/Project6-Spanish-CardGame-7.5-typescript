@@ -4,18 +4,17 @@ import {
   givePointCard,
   giveUrlCard,
   giveCardNumber,
-  checkGame,
   giveRandomNumber,
 } from "./motor";
 
-export const showScore = () => {
+const showScore = () => {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
     scoreElement.innerHTML = `Your score is ${partida.currentScore}`;
   }
 };
 
-export function printUrlImage(urlCard: string) {
+function printUrlImage(urlCard: string) {
   const imgElement = document.getElementById("startCard");
   if (
     imgElement !== null &&
@@ -26,7 +25,7 @@ export function printUrlImage(urlCard: string) {
   }
 }
 
-export const disableButtons = () => {
+const disableButtons = () => {
   const newCard = document.getElementById("hitMe");
   if (
     newCard !== null &&
@@ -52,7 +51,7 @@ export function winGame() {
     scoreElement.textContent = "¡Lo has clavado! ¡Enhorabuena!";
   }
   disableButtons();
-}
+};
 
 export function gameOver() {
   const scoreElement = document.getElementById("score");
@@ -60,7 +59,7 @@ export function gameOver() {
     scoreElement.textContent = "Game Over, better luck next time!";
   }
   disableButtons();
-}
+};
 
 let message = "";
 export function endGameMessage(finalScore: number) {
@@ -73,18 +72,18 @@ export function endGameMessage(finalScore: number) {
   } else {
     message = "Puntuacion no reconocida";
   }
-}
+};
 
-export function finalScoreMessage() {
+function finalScoreMessage() {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
     scoreElement.innerHTML = `Your final score is ${partida.currentScore}. ${message}`;
   }
-}
+};
 
 //reset button
 
-export const resetScore = () => {
+const resetScore = () => {
   partida.currentScore = 0;
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
@@ -92,7 +91,7 @@ export const resetScore = () => {
   }
 };
 
-export const resetButtons = () => {
+const resetButtons = () => {
   const newCard = document.getElementById("hitMe");
   if (
     newCard !== null &&
@@ -135,4 +134,26 @@ export function hitMe() {
   showScore();
 
   checkGame(partida.currentScore);
-}
+};
+
+
+function checkGame(finalScore: number) {
+  if (finalScore > 7.5) {
+    gameOver();
+  }
+  if (finalScore === 7.5) {
+    winGame();
+  }
+};
+
+export const stickHandle = () => {
+  endGameMessage(partida.currentScore);
+  finalScoreMessage();
+  disableButtons();
+};
+
+export const handleReset = () => {
+  resetScore();
+  resetCard();
+  resetButtons();
+};

@@ -1,10 +1,5 @@
 import { partida } from "./modelo";
 
-import { 
-  winGame, 
-  gameOver, 
-} from "./ui";
-
 export function giveUrlCard(card: number) {
   switch (card) {
     case 1:
@@ -35,15 +30,6 @@ export function giveUrlCard(card: number) {
 export function givePointCard(card: number) {
   console.log(card);
   return card <= 7 ? card : 0.5;
-};
-
-export function checkGame(finalScore: number) {
-  if (finalScore > 7.5) {
-    gameOver();
-  }
-  if (finalScore === 7.5) {
-    winGame();
-  }
 };
 
 export const giveRandomNumber = () => {
