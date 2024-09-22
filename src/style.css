@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,7 +17,7 @@ section {
   margin-top: 100px;
 }
 
-.cartas {
+.cards {
   margin: 5px;
   border-radius: 15px;
   width: 220px;

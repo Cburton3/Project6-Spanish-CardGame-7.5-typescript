@@ -1,4 +1,4 @@
-import { partida } from "./modelo";
+import { game } from "./model";
 
 export function giveUrlCard(card: number) {
   switch (card) {
@@ -25,12 +25,12 @@ export function giveUrlCard(card: number) {
     default:
       return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
   }
-};
+}
 
 export function givePointCard(card: number) {
   console.log(card);
   return card <= 7 ? card : 0.5;
-};
+}
 
 export const giveRandomNumber = () => {
   return Math.ceil(Math.random() * 10);
@@ -44,9 +44,5 @@ export const giveCardNumber = (randomNumber: number) => {
 };
 
 export const addPoints = (points: number) => {
-  //partida.currentScore = partida.currentScore + points; //this was changed by me
-  return partida.currentScore + points
+  return game.currentScore + points;
 };
-//add point to just do the calc
-//set func to add the newly added points 
-

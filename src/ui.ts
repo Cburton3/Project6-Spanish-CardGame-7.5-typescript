@@ -1,4 +1,4 @@
-import { partida, setCurrentScore } from "./modelo";
+import { game, setCurrentScore } from "./model";
 import {
   addPoints,
   givePointCard,
@@ -10,7 +10,7 @@ import {
 const showScore = () => {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
-    scoreElement.innerHTML = `Your score is ${partida.currentScore}`;
+    scoreElement.innerHTML = `Your score is ${game.currentScore}`;
   }
 };
 
@@ -32,8 +32,7 @@ const disableButtons = () => {
     newCard !== undefined &&
     newCard instanceof HTMLButtonElement
   ) {
-    //add instance of
-    newCard.disabled = true; //change to var
+    newCard.disabled = true;
   }
   const stick = document.getElementById("stick");
   if (
@@ -48,10 +47,10 @@ const disableButtons = () => {
 export function winGame() {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
-    scoreElement.textContent = "¡Lo has clavado! ¡Enhorabuena!";
+    scoreElement.textContent = "You nailed it! Welldone!";
   }
   disableButtons();
-};
+}
 
 export function gameOver() {
   const scoreElement = document.getElementById("score");
@@ -59,35 +58,35 @@ export function gameOver() {
     scoreElement.textContent = "Game Over, better luck next time!";
   }
   disableButtons();
-};
+}
 
 let message = "";
 export function endGameMessage(finalScore: number) {
   if (finalScore < 4) {
-    message = "Has sido muy conservador";
+    message = "That was very conservative...";
   } else if (finalScore <= 5) {
-    message = "Te ha entrado el canguelo eh?";
+    message = "Got a taste but didnt want more eh?";
   } else if (finalScore <= 7) {
-    message = "Casi casi...";
+    message = "Almost...there...";
   } else {
-    message = "Puntuacion no reconocida";
+    message = "Score not recognised";
   }
-};
+}
 
 function finalScoreMessage() {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
-    scoreElement.innerHTML = `Your final score is ${partida.currentScore}. ${message}`;
+    scoreElement.innerHTML = `Your final score is ${game.currentScore}. ${message}`;
   }
-};
+}
 
 //reset button
 
 const resetScore = () => {
-  partida.currentScore = 0;
+  game.currentScore = 0;
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
-    scoreElement.innerHTML = `Your score is ${partida.currentScore}`;
+    scoreElement.innerHTML = `Your score is ${game.currentScore}`;
   }
 };
 
@@ -126,16 +125,14 @@ export function hitMe() {
 
   const points = givePointCard(cardNumber);
 
-  //addPoints(points);
   const newPoints = addPoints(points);
 
   setCurrentScore(newPoints);
 
   showScore();
 
-  checkGame(partida.currentScore);
-};
-
+  checkGame(game.currentScore);
+}
 
 function checkGame(finalScore: number) {
   if (finalScore > 7.5) {
@@ -144,10 +141,10 @@ function checkGame(finalScore: number) {
   if (finalScore === 7.5) {
     winGame();
   }
-};
+}
 
 export const stickHandle = () => {
-  endGameMessage(partida.currentScore);
+  endGameMessage(game.currentScore);
   finalScoreMessage();
   disableButtons();
 };
