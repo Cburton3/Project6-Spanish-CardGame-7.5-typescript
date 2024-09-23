@@ -1,5 +1,7 @@
 import { hitMe, stickHandle, handleReset } from "./ui";
 
+//HITME BUTTON
+
 const newCard = document.getElementById("hitMe");
 if (newCard !== null && newCard !== undefined) {
   newCard.addEventListener("click", hitMe);

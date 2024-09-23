@@ -50,7 +50,7 @@ export function winGame() {
     scoreElement.textContent = "You nailed it! Welldone!";
   }
   disableButtons();
-}
+};
 
 export function gameOver() {
   const scoreElement = document.getElementById("score");
@@ -58,7 +58,7 @@ export function gameOver() {
     scoreElement.textContent = "Game Over, better luck next time!";
   }
   disableButtons();
-}
+};
 
 let message = "";
 export function endGameMessage(finalScore: number) {
@@ -71,14 +71,14 @@ export function endGameMessage(finalScore: number) {
   } else {
     message = "Score not recognised";
   }
-}
+};
 
 function finalScoreMessage() {
   const scoreElement = document.getElementById("score");
   if (scoreElement !== null && scoreElement !== undefined) {
     scoreElement.innerHTML = `Your final score is ${game.currentScore}. ${message}`;
   }
-}
+};
 
 //reset button
 
