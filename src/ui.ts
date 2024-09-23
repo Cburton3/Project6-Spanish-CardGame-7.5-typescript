@@ -50,7 +50,7 @@ export function winGame() {
     scoreElement.textContent = "You nailed it! Welldone!";
   }
   disableButtons();
-};
+}
 
 export function gameOver() {
   const scoreElement = document.getElementById("score");
@@ -58,29 +58,22 @@ export function gameOver() {
     scoreElement.textContent = "Game Over, better luck next time!";
   }
   disableButtons();
-};
+}
 
-let message = "";
 export function endGameMessage(finalScore: number) {
-  if (finalScore < 4) {
-    message = "That was very conservative...";
-  } else if (finalScore <= 5) {
-    message = "Got a taste but didnt want more eh?";
-  } else if (finalScore <= 7) {
-    message = "Almost...there...";
-  } else {
-    message = "Score not recognised";
-  }
-};
-
-function finalScoreMessage() {
   const scoreElement = document.getElementById("score");
-  if (scoreElement !== null && scoreElement !== undefined) {
-    scoreElement.innerHTML = `Your final score is ${game.currentScore}. ${message}`;
-  }
-};
+  let scoreIntro = `Your final score is ${game.currentScore}.`;
 
-//reset button
+  if (scoreElement && finalScore && finalScore < 4) {
+    scoreElement.innerHTML = `${scoreIntro} "That was very conservative..."`;
+  } else if (scoreElement && finalScore && finalScore <= 5) {
+    scoreElement.innerHTML = `${scoreIntro} "Got a taste but didnt want more eh?"`;
+  } else if (scoreElement && finalScore && finalScore <= 7) {
+    scoreElement.innerHTML = `${scoreIntro} "Almost...there..."`;
+  } else if (scoreElement) {
+    scoreElement.innerHTML = "Score not recognised";
+  }
+}
 
 const resetScore = () => {
   game.currentScore = 0;
@@ -145,7 +138,6 @@ function checkGame(finalScore: number) {
 
 export const stickHandle = () => {
   endGameMessage(game.currentScore);
-  finalScoreMessage();
   disableButtons();
 };
 
